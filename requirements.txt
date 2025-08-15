@@ -1,0 +1,4 @@
+customtkinter>=5.2.2
+requests>=2.31.0
+pyinstaller>=6.10.0
+pywin32>=306
