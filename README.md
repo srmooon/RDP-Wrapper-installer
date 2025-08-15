@@ -5,120 +5,120 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg)](https://microsoft.com/windows)
 [![GUI](https://img.shields.io/badge/GUI-CustomTkinter-orange.svg)](https://github.com/TomSchimansky/CustomTkinter)
 
-> **Instalador automático e inteligente para RDP Wrapper Library com interface gráfica moderna**
+> **Automated and intelligent installer for RDP Wrapper Library with modern graphical interface**
 
-## 📋 Sobre o Projeto
+## 📋 About the Project
 
-O **RDP Wrapper Installer by SrMoon** é uma ferramenta completa e automatizada que simplifica drasticamente a instalação do RDP Wrapper Library no Windows. Com uma interface gráfica moderna e intuitiva, o instalador executa todos os passos necessários automaticamente, eliminando a complexidade manual do processo.
+**RDP Wrapper Installer by SrMoon** is a complete and automated tool that dramatically simplifies the installation of RDP Wrapper Library on Windows. With a modern and intuitive graphical interface, the installer executes all necessary steps automatically, eliminating the manual complexity of the process.
 
-### 🎯 Características Principais
+### 🎯 Key Features
 
-- ✅ **Interface Gráfica Moderna** - Built com CustomTkinter (tema dark)
-- ✅ **Instalação Completamente Automatizada** - Zero intervenção manual
-- ✅ **Detecção Inteligente de Desktop** - Suporte OneDrive e Desktop padrão
-- ✅ **Execução Privilegiada** - Verificação e solicitação automática de admin
-- ✅ **Logs Detalhados** - Acompanhe cada etapa em tempo real
-- ✅ **Validação de Credenciais** - Interface intuitiva para usuário/senha
-- ✅ **Download Automático** - RDP Plus e componentes necessários
-- ✅ **Sequência Otimizada** - Ordem correta de instalação garantida
+- ✅ **Modern Graphical Interface** - Built with CustomTkinter (dark theme)
+- ✅ **Fully Automated Installation** - Zero manual intervention
+- ✅ **Smart Desktop Detection** - OneDrive and standard Desktop support
+- ✅ **Privileged Execution** - Automatic admin verification and request
+- ✅ **Detailed Logs** - Follow each step in real-time
+- ✅ **Credential Validation** - Intuitive interface for username/password
+- ✅ **Automatic Downloads** - RDP Plus and necessary components
+- ✅ **Optimized Sequence** - Correct installation order guaranteed
 
-## 🔧 Funcionalidades
+## 🔧 Features
 
-### 🎮 Interface Intuitiva
-- **Tema Dark Moderno** com CustomTkinter
-- **Validação em Tempo Real** de usuário e senha
-- **Barra de Progresso** visual com status detalhado
-- **Logs Coloridos** para fácil acompanhamento
+### 🎮 Intuitive Interface
+- **Modern Dark Theme** with CustomTkinter
+- **Real-time Validation** of username and password
+- **Visual Progress Bar** with detailed status
+- **Colored Logs** for easy tracking
 
-### 🛠️ Processo de Instalação
-1. **Configuração RDP** - Registry settings e serviços
-2. **Criação de Usuário** - Usuário RDP com privilégios admin
-3. **Download RDP Wrapper** - Versão mais recente do GitHub
-4. **Execução Sequencial** - update.bat → install.bat → autoupdate.bat
-5. **Configuração Final** - Atalhos e downloads complementares
+### 🛠️ Installation Process
+1. **RDP Configuration** - Registry settings and services
+2. **User Creation** - RDP user with admin privileges
+3. **RDP Wrapper Download** - Latest version from GitHub
+4. **Sequential Execution** - update.bat → install.bat → autoupdate.bat
+5. **Final Configuration** - Shortcuts and complementary downloads
 
-### 📁 Arquivos Criados
-- **Atalho RDPConf.exe** na área de trabalho
-- **RemoteDesktopPlus.exe** baixado automaticamente
-- **Usuário RDP** configurado e pronto para uso
+### 📁 Files Created
+- **RDPConf.exe Shortcut** on desktop
+- **RemoteDesktopPlus.exe** automatically downloaded
+- **RDP User** configured and ready to use
 
-## 🚀 Como Usar
+## 🚀 How to Use
 
-### Pré-requisitos
+### Prerequisites
 - Windows 10/11
-- Conexão com internet
-- Privilégios de administrador
+- Internet connection
+- Administrator privileges
 
-### Instalação
-1. **Baixe** o executável mais recente da seção [Releases](../../releases)
-2. **Execute** como administrador (obrigatório)
-3. **Configure** usuário e senha na interface
-4. **Clique** em "Start Installation"
-5. **Aguarde** a conclusão automática
-6. **Reinicie** quando solicitado
+### Installation
+1. **Download** the latest executable from [Releases](../../releases) section
+2. **Run** as administrator (mandatory)
+3. **Configure** username and password in the interface
+4. **Click** "Start Installation"
+5. **Wait** for automatic completion
+6. **Reboot** when prompted
 
-### Pós-Instalação
-Após o reboot, use as credenciais configuradas para conectar via RDP:
-- **Servidor:** `127.0.0.2`
-- **Usuário:** [configurado por você]
-- **Senha:** [configurada por você]
+### Post-Installation
+After reboot, use the configured credentials to connect via RDP:
+- **Server:** `127.0.0.2`
+- **Username:** [configured by you]
+- **Password:** [configured by you]
 
 ## 📸 Screenshots
 
-### Interface Principal
-![Interface](https://via.placeholder.com/600x400/2b2b2b/ffffff?text=Interface+Moderna+Dark+Theme)
+### Main Interface
+![Interface](https://via.placeholder.com/600x400/2b2b2b/ffffff?text=Modern+Dark+Theme+Interface)
 
-### Processo de Instalação
-![Instalação](https://via.placeholder.com/600x400/2b2b2b/ffffff?text=Logs+Detalhados+em+Tempo+Real)
+### Installation Process
+![Installation](https://via.placeholder.com/600x400/2b2b2b/ffffff?text=Detailed+Real-time+Logs)
 
-## 🔍 Detalhes Técnicos
+## 🔍 Technical Details
 
-### Arquitetura
-- **Linguagem:** Python 3.13
+### Architecture
+- **Language:** Python 3.13
 - **GUI Framework:** CustomTkinter
-- **Empacotamento:** PyInstaller
-- **Execução:** Single executable (.exe)
+- **Packaging:** PyInstaller
+- **Execution:** Single executable (.exe)
 
-### Componentes Instalados
-- **RDP Wrapper Library** v1.6.2 (oficial)
-- **Autoupdate** v1.2 (comunidade)
+### Installed Components
+- **RDP Wrapper Library** v1.6.2 (official)
+- **Autoupdate** v1.2 (community)
 - **RDP Configuration Tool** (RDPConf.exe)
-- **Remote Desktop Plus** (cliente RDP avançado)
+- **Remote Desktop Plus** (advanced RDP client)
 
-### Sequência de Execução
+### Execution Sequence
 ```bash
 1. Registry Fix (ServiceDll)
 2. update.bat (CMD admin)
-3. install.bat (CMD admin) 
+3. install.bat (CMD admin)
 4. autoupdate.bat (CMD admin - 2x)
 5. Shortcuts & Downloads
 6. Reboot Request
 ```
 
-## 🤝 Créditos
+## 🤝 Credits
 
-### Projeto Base
+### Base Project
 - **RDP Wrapper Library** - [Stas'M](https://github.com/stascorp/rdpwrap)
 - **Autoupdate Script** - [asmtron](https://github.com/asmtron/rdpwrap)
 
-### Ferramentas Utilizadas
+### Tools Used
 - **CustomTkinter** - [TomSchimansky](https://github.com/TomSchimansky/CustomTkinter)
 - **Remote Desktop Plus** - [donkz](https://www.donkz.nl/)
 
-### Desenvolvido por
-**SrMoon** - Automação e Interface Gráfica
+### Developed by
+**SrMoon** - Automation and Graphical Interface
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## ⚠️ Disclaimer
 
-Este software é fornecido "como está", sem garantias. Use por sua própria conta e risco. O desenvolvedor não se responsabiliza por danos causados pelo uso desta ferramenta.
+This software is provided "as is", without warranties. Use at your own risk. The developer is not responsible for damages caused by using this tool.
 
-## 🔗 Links Úteis
+## 🔗 Useful Links
 
-- [RDP Wrapper Original](https://github.com/stascorp/rdpwrap)
+- [Original RDP Wrapper](https://github.com/stascorp/rdpwrap)
 - [Autoupdate Community](https://github.com/asmtron/rdpwrap)
 - [Remote Desktop Plus](https://www.donkz.nl/download/remote-desktop-plus/)
 - [CustomTkinter Docs](https://customtkinter.tomschimansky.com/)
@@ -127,7 +127,7 @@ Este software é fornecido "como está", sem garantias. Use por sua própria con
 
 <div align="center">
 
-**⭐ Se este projeto foi útil, considere dar uma estrela! ⭐**
+**⭐ If this project was useful, consider giving it a star! ⭐**
 
 Made with ❤️ by [SrMoon](https://github.com/srmooon)
 
