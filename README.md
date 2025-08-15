@@ -66,10 +66,7 @@ After reboot, use the configured credentials to connect via RDP:
 ## 📸 Screenshots
 
 ### Main Interface
-![Interface](https://via.placeholder.com/600x400/2b2b2b/ffffff?text=Modern+Dark+Theme+Interface)
-
-### Installation Process
-![Installation](https://via.placeholder.com/600x400/2b2b2b/ffffff?text=Detailed+Real-time+Logs)
+![Interface](https://files.catbox.moe/teky0x.png)
 
 ## 🔍 Technical Details
 
