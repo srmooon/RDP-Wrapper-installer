@@ -112,6 +112,21 @@ After reboot, use the configured credentials to connect via RDP:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 🛡️ Security & Antivirus Information
+
+**⚠️ Important:** Some antivirus software may flag this tool as a false positive due to:
+- PyInstaller packaging (common with Python executables)
+- Administrative privileges requirement
+- System registry modifications
+- Batch file execution
+
+**✅ This is completely normal and expected.** The tool is open source, and you can:
+- Review all source code in this repository
+- Build from source yourself using the provided Python script
+- Check our [Security Information](SECURITY.md) for detailed analysis
+
+**🔍 VirusTotal Status:** Typically 6-8 false positives out of 70+ engines (standard for PyInstaller)
+
 ## ⚠️ Disclaimer
 
 This software is provided "as is", without warranties. Use at your own risk. The developer is not responsible for damages caused by using this tool.
