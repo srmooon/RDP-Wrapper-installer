@@ -30,13 +30,6 @@
 - **Visual Progress Bar** with detailed status
 - **Colored Logs** for easy tracking
 
-### 🛠️ Installation Process
-1. **RDP Configuration** - Registry settings and services
-2. **User Creation** - RDP user with admin privileges
-3. **RDP Wrapper Download** - Latest version from GitHub
-4. **Sequential Execution** - update.bat → install.bat → autoupdate.bat
-5. **Final Configuration** - Shortcuts and complementary downloads
-
 ### 📁 Files Created
 - **RDPConf.exe Shortcut** on desktop
 - **RemoteDesktopPlus.exe** automatically downloaded
@@ -66,7 +59,7 @@ After reboot, use the configured credentials to connect via RDP:
 ## 📸 Screenshots
 
 ### Main Interface
-![Interface](https://files.catbox.moe/teky0x.png)
+![Main Interface](https://files.catbox.moe/teky0x.png)
 
 ## 🔍 Technical Details
 
