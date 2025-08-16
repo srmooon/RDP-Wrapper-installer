@@ -119,54 +119,100 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔨 Build from Source (For Security-Conscious Users)
 
-If you prefer to compile the executable yourself instead of downloading the pre-built version, follow these steps:
+**Don't trust pre-built executables?** No problem! You can compile your own EXE file from the source code. This tutorial is designed for **complete beginners** - no programming experience required!
 
-### Prerequisites
-- **Python 3.8+** installed on your system
-- **Git** (optional, for cloning)
+### 📋 What You'll Need
+- A Windows computer
+- Internet connection
+- 15-20 minutes of your time
 
-### Step-by-Step Compilation Guide
+### 🚀 Complete Step-by-Step Guide
 
-1. **Clone or Download the Repository**
+#### Step 1: Install Python (If You Don't Have It)
+1. **Download Python:**
+   - Go to [python.org/downloads](https://python.org/downloads)
+   - Click the big yellow "Download Python" button
+   - This will download the latest version (3.12+)
+
+2. **Install Python:**
+   - Run the downloaded installer
+   - ⚠️ **IMPORTANT**: Check the box "Add Python to PATH" at the bottom
+   - Click "Install Now"
+   - Wait for installation to complete
+
+3. **Verify Installation:**
+   - Press `Windows Key + R`
+   - Type `cmd` and press Enter
+   - Type `python --version` and press Enter
+   - You should see something like "Python 3.12.x"
+
+#### Step 2: Download the Source Code
+**Option A: Easy Way (No Git Required)**
+1. Click the green "Code" button at the top of this page
+2. Click "Download ZIP"
+3. Extract the ZIP file to your Desktop
+4. You'll have a folder called "RDP-Wrapper-installer-main"
+
+**Option B: Using Git (If You Have It)**
+1. Open Command Prompt (`Windows Key + R`, type `cmd`)
+2. Type: `git clone https://github.com/srmooon/RDP-Wrapper-installer.git`
+
+#### Step 3: Install Required Libraries
+1. **Open Command Prompt in the project folder:**
+   - Navigate to the extracted folder
+   - Hold `Shift` and right-click in the folder
+   - Select "Open PowerShell window here" or "Open command window here"
+
+2. **Install dependencies:**
    ```bash
-   git clone https://github.com/srmooon/RDP-Wrapper-installer.git
-   cd RDP-Wrapper-installer
+   pip install customtkinter requests pywin32 pyinstaller
    ```
-   *Or download and extract the ZIP from the green "Code" button above*
+   *This will download and install all needed libraries*
 
-2. **Install Required Dependencies**
+#### Step 4: Compile Your EXE
+1. **In the same command window, type:**
    ```bash
-   pip install -r requirements.txt
+   pyinstaller --onefile --windowed rdp_wrapper_installer.py
    ```
 
-3. **Install PyInstaller** (if not included in requirements)
-   ```bash
-   pip install pyinstaller
-   ```
+2. **Wait for compilation** (this may take 2-5 minutes)
 
-4. **Compile to Executable**
-   ```bash
-   pyinstaller --onefile --windowed --icon=icon.ico rdp_wrapper_installer.py
-   ```
-   *Note: If you don't have an icon file, remove the `--icon=icon.ico` part*
+3. **Find your EXE:**
+   - Look for a new folder called `dist`
+   - Inside you'll find `rdp_wrapper_installer.exe`
+   - **This is YOUR compiled version - 100% safe!**
 
-5. **Find Your Compiled EXE**
-   - The executable will be created in the `dist/` folder
-   - File name: `rdp_wrapper_installer.exe`
-   - This is YOUR personally compiled version - 100% safe!
-
-### Alternative One-Line Compilation
+### 🎯 Quick One-Command Method (Advanced Users)
 ```bash
-pyinstaller --onefile --windowed rdp_wrapper_installer.py
+pip install customtkinter requests pywin32 pyinstaller && pyinstaller --onefile --windowed rdp_wrapper_installer.py
 ```
 
-### Why Compile Yourself?
+### 🛡️ Why Compile Yourself?
 - **🔒 Maximum Security**: You control the entire build process
 - **🛡️ No False Positives**: Your antivirus won't flag your own compilation
 - **✅ Source Code Verification**: You can review every line before compiling
 - **🎯 Custom Modifications**: Modify the code if needed before compilation
+- **🏆 Peace of Mind**: 100% certainty that your EXE is clean and safe
 
-**💡 Pro Tip:** After compilation, you can even scan your own EXE with VirusTotal to confirm it's clean!
+### 🔧 Troubleshooting Common Issues
+
+**❌ "Python is not recognized"**
+- Solution: Reinstall Python and make sure to check "Add Python to PATH"
+
+**❌ "pip is not recognized"**
+- Solution: Python wasn't installed correctly. Reinstall with PATH option checked
+
+**❌ "No module named 'customtkinter'"**
+- Solution: Run `pip install customtkinter requests pywin32 pyinstaller` again
+
+**❌ Compilation takes too long**
+- This is normal! First compilation can take 5-10 minutes depending on your computer
+
+**❌ Antivirus blocks the compilation**
+- Temporarily disable real-time protection during compilation
+- Add the project folder to antivirus exclusions
+
+**💡 Pro Tip:** After compilation, you can scan your own EXE with VirusTotal to confirm it's clean!
 
 ## ⚠️ Disclaimer
 
