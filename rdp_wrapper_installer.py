@@ -55,6 +55,12 @@ class RDPWrapperInstaller:
         except:
             return False
 
+    def ps_escape(self, value):
+        """Escapa strings para uso seguro em literais de string de PowerShell com aspas simples"""
+        if value is None:
+            return ""
+        return str(value).replace("'", "''")
+
     def check_admin_on_startup(self):
         """Verifica privilégios administrativos no startup - OBRIGATÓRIO"""
         if not self.is_admin:
@@ -369,14 +375,14 @@ class RDPWrapperInstaller:
 
             
             powershell_commands = [
-                
+                # Habilita RDP (server-side)
                 "Set-ItemProperty -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server' -Name 'fDenyTSConnections' -Value 0",
-
-                
-                "Set-ItemProperty -Path 'HKLM:\\Software\\Microsoft\\Terminal Server Client' -Name 'RemoteDesktop_SuppressWhenMinimized' -Value 2",
-
-                
-                "Set-ItemProperty -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server' -Name 'fDenyTSConnections' -Value 0"
+                # Garante startup automático do serviço RDP
+                "Set-Service -Name TermService -StartupType Automatic",
+                # Habilita regras de firewall do Remote Desktop (método moderno)
+                "Enable-NetFirewallRule -DisplayGroup 'Remote Desktop'",
+                # Fallback legado via netsh (não falha se já estiver habilitado)
+                "netsh advfirewall firewall set rule group='Remote Desktop' new enable=Yes"
             ]
 
             self.log_message("🔧 Configuring RDP registry settings...")
@@ -393,23 +399,43 @@ class RDPWrapperInstaller:
             self.execute_powershell_command('Start-Service "termservice"')
 
             self.update_progress(0.4)
-            self.log_message("👤 Creating RDP user...")
-            self.update_status("Creating user...")
+            self.log_message("👤 Creating/ensuring RDP user (idempotent)...")
+            self.update_status("Creating/Updating user...")
 
-            
-            create_user_cmd = f'$securePassword = ConvertTo-SecureString "{password}" -AsPlainText -Force; New-LocalUser -Name "{username}" -Password $securePassword -FullName "{username}" -PasswordNeverExpires'
-            self.execute_powershell_command(create_user_cmd)
+            # Escapa credenciais para PowerShell (aspas simples) e executa fluxo idempotente
+            ps_user = self.ps_escape(username)
+            ps_pass = self.ps_escape(password)
+            create_or_update_user_cmd = f'''
+$u = '{ps_user}';
+$plain = '{ps_pass}';
+$secure = ConvertTo-SecureString $plain -AsPlainText -Force;
+$existing = Get-LocalUser -Name $u -ErrorAction SilentlyContinue;
+if ($existing) {{
+  Write-Output "User '$u' already exists. Ensuring enabled and updating password.";
+  try {{ Enable-LocalUser -Name $u }} catch {{}};
+  try {{ Set-LocalUser -Name $u -Password $secure -FullName $u }} catch {{}};
+}} else {{
+  New-LocalUser -Name $u -Password $secure -FullName $u -PasswordNeverExpires;
+  Write-Output "User '$u' created.";
+}}
+'''
+            self.execute_powershell_command(create_or_update_user_cmd)
 
             self.update_progress(0.5)
-            self.log_message("🔐 Adding user to Administrators group...")
+            self.log_message("🔐 Ensuring user is in Administrators group (idempotent)...")
 
-            
             add_to_admin_cmd = f'''
-            $adminSID = New-Object System.Security.Principal.SecurityIdentifier("S-1-5-32-544");
-            $adminGroupName = $adminSID.Translate([System.Security.Principal.NTAccount]);
-            $adminGroupNameTrimmed = ($adminGroupName.Value).Split("\\")[1];
-            Add-LocalGroupMember -Group $adminGroupNameTrimmed -Member "{username}"
-            '''
+$u = '{ps_user}';
+$adminSID = New-Object System.Security.Principal.SecurityIdentifier("S-1-5-32-544");
+$adminGroupName = $adminSID.Translate([System.Security.Principal.NTAccount]);
+$adminGroupNameTrimmed = ($adminGroupName.Value).Split("\\")[1];
+if (-not (Get-LocalGroupMember -Group $adminGroupNameTrimmed -Member $u -ErrorAction SilentlyContinue)) {{
+  Add-LocalGroupMember -Group $adminGroupNameTrimmed -Member $u;
+  Write-Output "User '$u' added to $adminGroupNameTrimmed.";
+}} else {{
+  Write-Output "User '$u' is already a member of $adminGroupNameTrimmed.";
+}}
+'''
             self.execute_powershell_command(add_to_admin_cmd)
 
             self.update_progress(0.6)
